@@ -21,11 +21,11 @@
         <p class="lead">Herzlich Willkommen auf dem Highscore Ranker.</p>
         <div th:if="${hasBirthday == true}">
             <p class="lead">Hallo, Papa. Alles gute zum Geburtstag.</p>
+            <audio autoplay="true">
+                <source src="music/celebrate.mp3" type="audio/mpeg"/>
+            </audio>
         </div>
     </div>
-    <audio autoplay="true">
-        <source src="music/celebrate.mp3" type="audio/mpeg"/>
-    </audio>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
