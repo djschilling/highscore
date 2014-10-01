@@ -12,4 +12,6 @@ public interface GameService {
     Game createGame(Game game);
 
     List<Game> getAllGames();
+
+    List<GameDTO> getAllGamesWithHighscore();
 }

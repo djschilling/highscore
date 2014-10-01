@@ -1,6 +1,7 @@
 package de.davidschilling.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -21,11 +22,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(String username, String password) {
         User user = userRepository.findByUsername(username);
-        if(user == null) {
+        if (user == null) {
             return userRepository.save(new User(username, password));
         } else {
             throw new UserServiceException("User with name " + username + " already exists.");
         }
+    }
+
+    @Override
+    public User getCurrentlyLoggedIn() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
     }
 
     @Override

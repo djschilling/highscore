@@ -1,5 +1,8 @@
-package de.davidschilling.game;
+package de.davidschilling.controller;
 
+import de.davidschilling.game.Game;
+import de.davidschilling.game.GameService;
+import de.davidschilling.score.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class GameController {
 
     private GameService gameService;
+    private ScoreService scoreService;
 
     @Autowired
-    public GameController(GameService gameService) {
+    public GameController(GameService gameService, ScoreService scoreService) {
         this.gameService = gameService;
+        this.scoreService = scoreService;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -36,12 +41,13 @@ public class GameController {
     public String getGame(@PathVariable String name, Model model) {
         Game game = gameService.getGameByName(name);
         model.addAttribute("game", game);
+        model.addAttribute("scores", scoreService.getScoreForGame(name));
         return "game/game";
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getAll(Model model) {
-        model.addAttribute("games", gameService.getAllGames());
+        model.addAttribute("games", gameService.getAllGamesWithHighscore());
         return "game/games";
     }
 }

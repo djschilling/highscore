@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="'Game: ' + ${game.name}"/>
+    <title>Hello World</title>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -16,25 +16,16 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1 th:text="${game.name}"/>
-        <img th:src="${game.pictureUrl}" width="200px"/>
-        <div style="margin-top: 5px">
-            <a href="/scores/new"><button type="button" class="btn btn-success">Neuen Score eintragen.</button></a>
-        </div>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>User</th>
-                <th>Score</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="score : ${scores}" class="clickable-row table-responsive">
-                <td data-th-text="${score.username}"/>
-                <td data-th-text="${score.score}"/>
-            </tr>
-            </tbody>
-        </table>
+        <h1>Submit new Score</h1>
+        <form action="#" th:action="@{/scores}" th:object="${score}" method="post">
+            <select th:field="*{gameName}">
+                <option th:each="game : ${games}"
+                        th:value="${game.name}"
+                        th:text="${game.name}">Wireframe</option>
+            </select>
+            <input type="text" th:field="*{score}" placeholder="Score"/>
+            <button type="submit" name="create">Score</button>
+        </form>
     </div>
 
 </div>
