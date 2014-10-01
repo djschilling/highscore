@@ -17,11 +17,30 @@
 
     <div class="starter-template">
         <h1>Create new Game</h1>
-        <form action="#" th:action="@{/games}" th:object="${game}" method="post">
-            <input type="text" th:field="*{name}" placeholder="Name"/>
-            <input type="text" th:field="*{description}" placeholder="Beschreibung"/>
-            <input type="text" th:field="*{pictureUrl}" placeholder="Link zum Bild"/>
-            <button type="submit" name="create">Create</button>
+        <form action="#" th:action="@{/games}" th:object="${game}" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Name</label>
+                <div class="col-lg-3">
+                    <input type="text" th:field="*{name}" placeholder="Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Beschreibung</label>
+                <div class="col-lg-3">
+                    <input type="text" th:field="*{description}" placeholder="Beschreibung" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Link zum Bild</label>
+                <div class="col-lg-3">
+                    <input type="text" th:field="*{pictureUrl}" placeholder="Link zum Bild" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-3">
+                    <button class="btn btn-default">Anlegen</button>
+                </div>
+            </div>
         </form>
     </div>
 

@@ -30,7 +30,12 @@ public class UserController {
 
     @RequestMapping(value = "/initial", method = RequestMethod.GET)
     public String initial() {
-        userRepository.save(new User("bernd", "bernd"));
+        userRepository.save(new User("mama", "mama"));
+        userRepository.save(new User("david", "david"));
+        userRepository.save(new User("winfried", "winfried"));
+        userRepository.save(new User("eva", "eva"));
+        userRepository.save(new User("raphael", "raphael"));
+        userRepository.save(new User("jessica", "jessica"));
         return "redirect:/";
     }
 
