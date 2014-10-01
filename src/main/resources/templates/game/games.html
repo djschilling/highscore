@@ -16,10 +16,22 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Hallo</h1>
-
-        <p class="lead">Herzlich Willkommen auf dem Highscore Ranker.</p>
-    </div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Beschreibung</th>
+                <th>Bild</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="game : ${games}" class="clickable-row table-responsive">
+                <td data-th-text="${game.name}"/>
+                <td data-th-text="${game.description}"/>
+                <td><img th:src="${game.pictureUrl}" width="50px"/></td>
+            </tr>
+            </tbody>
+        </table>    </div>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

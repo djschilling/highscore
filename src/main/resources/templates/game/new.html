@@ -16,9 +16,13 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Hallo</h1>
-
-        <p class="lead">Herzlich Willkommen auf dem Highscore Ranker.</p>
+        <h1>Create new Game</h1>
+        <form action="#" th:action="@{/games}" th:object="${game}" method="post">
+            <input type="text" th:field="*{name}" placeholder="Name"/>
+            <input type="text" th:field="*{description}" placeholder="Beschreibung"/>
+            <input type="text" th:field="*{pictureUrl}" placeholder="Link zum Bild"/>
+            <button type="submit" name="create">Create</button>
+        </form>
     </div>
 
 </div>
